@@ -26,7 +26,8 @@ export const getPartners = async (): Promise<readonly MarketplacePartner[]> => {
       servedGeos: p.servedGeos,
       calendlyLink: p.calendlyLink.primaryLinkUrl,
     }));
-  } catch {
+  } catch (error) {
+    console.error('[twenty-api] getPartners failed:', error);
     return [];
   }
 };
