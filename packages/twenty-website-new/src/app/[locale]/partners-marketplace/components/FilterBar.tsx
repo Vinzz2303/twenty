@@ -22,6 +22,7 @@ import {
   SERVED_GEO_LABELS,
   SPOKEN_LANGUAGE_LABELS,
 } from './chip-labels';
+import { ClearFiltersButton } from './ClearFiltersButton';
 import { FilterChipRow } from './FilterChipRow';
 
 type FilterBarProps = {
@@ -56,30 +57,6 @@ const ResultCount = styled.p`
   font-size: ${theme.font.size(3)};
   line-height: ${theme.lineHeight(4)};
   margin: 0;
-`;
-
-const ClearButton = styled.button`
-  background-color: transparent;
-  border: 1px solid ${theme.colors.primary.border[20]};
-  border-radius: ${theme.radius(1)};
-  color: ${theme.colors.primary.text[100]};
-  cursor: pointer;
-  font-family: ${theme.font.family.mono};
-  font-size: ${theme.font.size(3)};
-  font-weight: ${theme.font.weight.medium};
-  letter-spacing: 0.08em;
-  line-height: ${theme.lineHeight(4)};
-  padding: ${theme.spacing(2)} ${theme.spacing(3)};
-  text-transform: uppercase;
-
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.04);
-  }
-
-  &:focus-visible {
-    outline: 2px solid ${theme.colors.primary.border[40]};
-    outline-offset: 2px;
-  }
 `;
 
 export function FilterBar({
@@ -124,9 +101,9 @@ export function FilterBar({
             : i18n._(msg`Showing all ${totalCount} partners`)}
         </ResultCount>
         {hasAnyFilter && (
-          <ClearButton type="button" onClick={onClearAll}>
+          <ClearFiltersButton onClick={onClearAll}>
             {i18n._(msg`Clear filters`)}
-          </ClearButton>
+          </ClearFiltersButton>
         )}
       </Footer>
     </BarSection>
